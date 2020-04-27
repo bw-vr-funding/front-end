@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import * as yup from "yup";
+import "../index.css";
 
 const initialState = {
     name: "",
@@ -68,7 +69,7 @@ const SignUp = props => {
         <div>
             <h2>Sign Up</h2>
             <form id="signup" onSubmit={handleSubmit}>
-                {errors.name}
+            <p className="errors" >{errors.name}</p> 
                 <br />
             <label>Username: 
                 <input      
@@ -80,7 +81,7 @@ const SignUp = props => {
                 ></input>
             </label>
             <br />
-            {errors.password}
+            <p className="errors">{errors.password}</p>
             < br/>
             <label>Password: 
                 <input   
