@@ -1,24 +1,56 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState}  from 'react';
+import { Route, Link } from "react-router-dom";
+//Style Imports
 import './App.css';
+//Special Imports
+import * as yup from "yup";
+import axios from 'axios'
+//Page Imports
+import Login from './components/login'
+import SignUp from './components/signup'
+
+//Values
+const initialFormValues = {
+  username: '',
+  password: '',
+}
+const initialFormErrors = {
+username: '',
+password: '',
+}
+
+//Schema for Validation
+const formSchema = yup.object().shape({
+  username: yup
+    .string()
+    .min(3, 'Username must have at least 3 characters!')
+    .required('Username is required!'),
+  password: yup
+    .string()
+    .min(5, 'Password must be 5 characters long')
+    .required('Password is required'),
+})
+
+
 
 function App() {
+  //states
+  const [ formValues, setFormValues ] = useState(initialFormValues)
+  const [ formErrors, setFormErrors ] =useState(initialFormErrors)
+  
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Link to="/signup"><button>Sign Up</button></Link>
+      <Link to="/login"><button>Login</button></Link>
+      
+      <Route path="/signup" component={SignUp}/>
+      <Route path="/login" component={Login}/>
+
+
+
+      
+      <Login />
     </div>
   );
 }
