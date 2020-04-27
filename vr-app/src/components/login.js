@@ -22,7 +22,10 @@ function Login(){
                     name="password"
                     type="password"></input>
                 </label>
-            
+                <br />
+                <button
+                type="submit">Submit
+                </button>
                 
             </form>
 

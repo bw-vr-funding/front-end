@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 function SignUp() {
     return (
         <div>
-            <form id="singup">
+            <form id="signup">
             <h2>Sign Up</h2>
             <label>Username: 
                 <input                
@@ -21,6 +21,10 @@ function SignUp() {
                 name="password"
                 type="password"></input>
             </label>
+            <br />
+                <button
+                type="submit">Submit
+                </button>
             </form>
         </div>
     );
