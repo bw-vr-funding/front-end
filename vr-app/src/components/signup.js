@@ -1,16 +1,58 @@
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
-//special imports
+import * as yup from "yup";
+
+const initialState = {
+    name: "",
+    password: "",
+    isFetching: false
+}
+const initialErrorState = {
+    name: "",
+    password: "",
+}
+
+//schema
+const formSchema = yup.object().shape({
+    name: yup
+      .string()
+      .min(5, 'Username must have at least 5 characters!')
+      .required(),
+    password: yup
+      .string()
+      .min(5, 'Password must include 5 characters and 10 symbols')
+      .required('Password is required'),
+  })
 
 const SignUp = props => {
     const [signUp, setSignUp] = useState({
-        username: "",
+        name: "",
         password: "",
     });
+    const [errors, setErrors] = useState(initialErrorState)
 
     const handleChange = event => {
         setSignUp({...signUp, [event.target.name]: event.target.value});
+
+        const name = event.target.name
+        const value = event.target.value
+
+        //yup
+        yup
+        .reach(formSchema, name)
+        .validate(value)
+        .then(valid => {
+        setErrors({
+            ...errors, [name]: '',
+        })
+        })
+        .catch(err => {
+        setErrors({
+            ...errors, [name]: err.errors[0]
+        })
+        
+        })
     };
 
     const handleSubmit = event => {
@@ -26,6 +68,8 @@ const SignUp = props => {
         <div>
             <h2>Sign Up</h2>
             <form id="signup" onSubmit={handleSubmit}>
+                {errors.name}
+                <br />
             <label>Username: 
                 <input      
                 id="name"          
@@ -36,6 +80,8 @@ const SignUp = props => {
                 ></input>
             </label>
             <br />
+            {errors.password}
+            < br/>
             <label>Password: 
                 <input   
                 id="password"             
