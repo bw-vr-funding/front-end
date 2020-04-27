@@ -71,7 +71,7 @@ const Login = props => {
         <div>
                  <h2>Login</h2>
                 <h4>Welcome back</h4>
-            <form id="loginform" onSubmit={handleSubmit}>
+            <form id="loginForm" onSubmit={handleSubmit}>
             <p className="errors" >{errors.name}</p> <br />
                 <label>Username: 
                     <input   

@@ -68,7 +68,7 @@ const SignUp = props => {
     return (
         <div>
             <h2>Sign Up</h2>
-            <form id="signup" onSubmit={handleSubmit}>
+            <form id="signupForm" onSubmit={handleSubmit}>
             <p className="errors" >{errors.name}</p> 
                 <br />
             <label>Username: 
