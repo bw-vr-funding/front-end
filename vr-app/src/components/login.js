@@ -1,26 +1,61 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from "react-router-dom";
-//special imports
+import { axiosWithAuth } from "../utils/axiosWithAuth";
 
+const initialState = {
+    username: "",
+    password: "",
+    isFetching: false
+}
+const initialErrorState = {
+    username: "",
+    password: "",
+}
 
-function Login(){
+const Login = props => {
+    const [login, setLogin] = useState(initialState);
+    const [errors, setErrors] = useState(initialErrorState);
+
+    
+
+    const handleChange = event => {
+        setLogin({...login, [event.target.name]: event.target.value });
+    };
+
+    const handleSubmit = event => {
+        event.preventDefault();
+        setLogin({...login, isFetching: true })
+        .post("/auth/login", login) //CHECK API
+        .then(res => {
+            localStorage.setItem("token", res.data.message) //CHECK RES
+        })
+        .catch(err => { console.log(err, "cannot login");
+    });
+    };
+
     return (
         <div>
-            <form id="loginform">
-                <h2>Login</h2>
+                 <h2>Login</h2>
                 <h4>Welcome back</h4>
+            <form id="loginform" onSubmit={handleSubmit}>
                 <label>Username: 
-                    <input                
+                    <input   
+                    id="name"             
                     placeholder="Input Username"
                     name="name"
-                    type="text"></input>
+                    type="text"
+                    onChange={handleChange}
+                    ></input>
                 </label>
                 <br />
                 <label>Password: 
-                    <input                
+                    <input    
+                    id="password"            
                     placeholder="Input Password"
                     name="password"
-                    type="password"></input>
+                    type="password"
+                    onChange={handleChange}
+                    ></input>
                 </label>
                 <br />
                 <button
