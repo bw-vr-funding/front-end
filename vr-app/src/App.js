@@ -14,6 +14,7 @@ function App() {
 
   return (
     <div className="App">
+      <h1>VR APP</h1>
       <Link to="/signup"><button>Sign Up</button></Link>
       <Link to="/login"><button>Login</button></Link>
       

@@ -1,56 +1,58 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
-//special imports
 
 const SignUp = props => {
-    const [signUp, setSignUp] = useState({
-        username: "",
-        password: "",
-    });
+  const [signUp, setSignUp] = useState({
+    username: "",
+    password: ""
+  });
 
-    const handleChange = event => {
-        setSignUp({...signUp, [event.target.name]: event.target.value});
-    };
+  const handleChange = e => {
+    setSignUp({ ...signUp, [e.target.name]: e.target.value });
+  };
 
-    const handleSubmit = event => {
-        event.preventDefault();
-        setSignUp({...signUp});
-        axiosWithAuth()
-        .post("/auth/register", signUp)  // NEEDS FINAL API
-        .then(res => {window.location.reload();})
-        .catch(err => console.log(err, "could not submit"));
-    };
+  const handleSubmit = e => {
+    e.preventDefault();
+    setSignUp({ ...signUp });
+    axiosWithAuth()
+      .post("/auth/register", signUp)
+      .then(res => {
+        props.history.push("/");
+      })
+      .catch(err =>
+        console.log(err, "sorry, an error has occured while signing you up")
+      );
+  };
 
-    return (
-        <div>
-            <h2>Sign Up</h2>
-            <form id="signup" onSubmit={handleSubmit}>
-            <label>Username: 
-                <input      
-                id="name"          
-                name="name"
-                type="text"
-                placeholder="Input Username"
-                onChange={handleChange}
-                ></input>
-            </label>
-            <br />
-            <label>Password: 
-                <input   
-                id="password"             
-                name="password"
-                type="password"
-                placeholder="Input Password"
-                onChange={handleChange}
-                ></input>
-            </label>
-            <br />
-                <button
-                type="submit">Submit
-                </button>
-            </form>
-        </div>
-    );
+  return (
+    <div>    
+      <h3>Sign Up</h3>
+      <form onSubmit={handleSubmit}>
+        <input
+          label="Username"
+          id="username"
+          name="username"
+          placeholder="username"
+          onChange={handleChange}
+        />
+        <br />
+        <input
+          label="Password"
+          type="password"
+          id="password"
+          name="password"
+          placeholder="password"
+          onChange={handleChange}
+        />
+        <br />
+        <br />
+        <button>Sign Up</button>
+      </form>
+      <br />
+      Have an account already? <Link to="/login">Log In</Link>
+    </div>
+  );
 };
+
 export default SignUp;

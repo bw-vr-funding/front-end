@@ -1,63 +1,66 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 const initialState = {
-    username: "",
-    password: "",
-    isFetching: false
-}
+  username: "",
+  password: "",
+  isFetching: false
+};
 
 const Login = props => {
-    const [login, setLogin] = useState(initialState);
+  const [login, setLogin] = useState(initialState);
 
-    const handleChange = event => {
-        setLogin({...login, [event.target.name]: event.target.value });
-    };
+  const handleChange = e => {
+    setLogin({ ...login, [e.target.name]: e.target.value });
+  };
 
-    const handleSubmit = event => {
-        event.preventDefault();
-        setLogin({...login, isFetching: true })
-        .post("/auth/login", login) //CHECK API
-        .then(res => {
-            localStorage.setItem("token", res.data.message) //CHECK RES
-        })
-        .catch(err => { console.log(err, "cannot login");
-    });
-    };
+  const handleSubmit = event => {
+    event.preventDefault();
+    setLogin({ ...login, isFetching: true });
+    axiosWithAuth()
+      .post("/auth/login", login)
+      .then(res => {
+        localStorage.setItem("token", res.data.message);
+        props.history.push("/");
+      })
+      .catch(err => {
+        console.log(err, "cannot login");
+      });
+  };
 
-    return (
-        <div>
-                 <h2>Login</h2>
-                <h4>Welcome back</h4>
-            <form id="loginform" onSubmit={handleSubmit}>
-                <label>Username: 
-                    <input   
-                    id="name"             
-                    placeholder="Input Username"
-                    name="name"
-                    type="text"
-                    onChange={handleChange}
-                    ></input>
-                </label>
-                <br />
-                <label>Password: 
-                    <input    
-                    id="password"            
-                    placeholder="Input Password"
-                    name="password"
-                    type="password"
-                    onChange={handleChange}
-                    ></input>
-                </label>
-                <br />
-                <button
-                type="submit">Submit
-                </button>
-                
-            </form>
+  return (
+    <div>
+      <h2>Login</h2>
+      <h4>Welcome back!</h4>
+      <div>
+        <form onSubmit={handleSubmit}>
+          <input
+            id="name"
+            label="Username"
+            type="text"
+            name="username"
+            placeholder="username"
+            onChange={handleChange}
+            value={login.username}
+          />
+          <br />
+          <input
+            id="password"
+            label="Password"
+            type="password"
+            name="password"
+            placeholder="password"
+            onChange={handleChange}
+            value={login.password}
+          />
+          <br />
+          <button type="submit">Submit</button>
+        </form>
+        Make an account? <Link to="/signup">Sign Up</Link>
+      </div>
+    </div>
+  );
+};
 
-        </div>
-    );
-}
 export default Login;
