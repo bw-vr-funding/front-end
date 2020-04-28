@@ -21,8 +21,8 @@ const Login = props => {
     axiosWithAuth()
       .post("/auth/login", login)
       .then(res => {
-        localStorage.setItem("token", res.data.message);
-        props.history.push("/");
+        localStorage.setItem("token", res.data.token);
+        props.history.push("/dashboard");
       })
       .catch(err => {
         console.log(err, "cannot login");
