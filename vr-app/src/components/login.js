@@ -1,20 +1,16 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
-
 const initialState = {
   username: "",
   password: "",
   isFetching: false
 };
-
 const Login = props => {
   const [login, setLogin] = useState(initialState);
-
   const handleChange = e => {
     setLogin({ ...login, [e.target.name]: e.target.value });
   };
-
   const handleSubmit = event => {
     event.preventDefault();
     setLogin({ ...login, isFetching: true });
@@ -23,12 +19,13 @@ const Login = props => {
       .then(res => {
         localStorage.setItem("token", res.data.message);
         props.history.push("/");
+        localStorage.setItem("token", res.data.token);
+        props.history.push("/dashboard");
       })
       .catch(err => {
         console.log(err, "cannot login");
       });
   };
-
   return (
     <div>
       <h2>Login</h2>
@@ -62,5 +59,4 @@ const Login = props => {
     </div>
   );
 };
-
 export default Login;
