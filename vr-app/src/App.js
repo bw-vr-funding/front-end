@@ -13,10 +13,13 @@ function App() {
 
   return (
     <div className="App">
-      <h1>VR APP</h1>
-      <Link to="/signup"><button>Sign Up</button></Link>
-      <Link to="/login"><button>Login</button></Link>
-      
+      <nav>
+        <Link to="/home"><h1 id="logo">VR-Funding</h1></Link>
+        <div id="navButtons">
+      <Link to="/signup" ><button className="topbut" >Sign Up</button></Link>
+      <Link to="/login" ><button className="topbut" >Login</button></Link>
+      </div>
+      </nav>
       <Route path="/signup" component={SignUp}/>
       <Route path="/login" component={Login}/>
       <Route path="/home" component={Home}/>
