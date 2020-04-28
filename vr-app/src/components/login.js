@@ -27,6 +27,7 @@ const formSchema = yup.object().shape({
   })
 
 const Login = props => {
+
     const [login, setLogin] = useState(initialState);
     const [errors, setErrors] = useState(initialErrorState);
 
@@ -96,8 +97,10 @@ const Login = props => {
                 </label>
                 <br />
                 <button
-                type="submit">Submit
+                type="submit" className="submitbut" >Submit
                 </button>
+                <br />
+                <Link to="/home"><button className="homebut">Take Me Home</button></Link>
                 
             </form>
 

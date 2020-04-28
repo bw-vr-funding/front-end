@@ -36,3 +36,19 @@
     transform: rotate(360deg);
   }
 }
+
+nav{
+  background-color: #61dafb;
+  padding: 3%;
+  }
+  .navbut{
+    background-color: antiquewhite;
+    border-radius: 25px;
+    width: 10%;
+    border: 1.5px solid black;
+    position: relative;
+    left: 35%;
+    margin-left: 2%;
+    font-weight: bolder;
+  }
+  
