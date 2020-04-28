@@ -13,10 +13,9 @@ function App() {
 
   return (
     <div className="App">
-      <nav>
-      <Link to="/signup"><button className="navbut" >Sign Up</button></Link>
-      <Link to="/login"><button className="navbut">Login</button></Link>
-      </nav>
+      <h1>VR APP</h1>
+      <Link to="/signup"><button>Sign Up</button></Link>
+      <Link to="/login"><button>Login</button></Link>
       
       <Route path="/signup" component={SignUp}/>
       <Route path="/login" component={Login}/>
