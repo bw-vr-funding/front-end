@@ -26,10 +26,16 @@ code {
   border: 1.5px solid black;
   margin-top: 5%;
 }
-#loginForm{
-  background-color: aliceblue;
-  width: fit-content;
-  margin: 0 auto;
-  padding: 2%;
-  border: 1px solid black;
+
+#footer{
+  height: 50px;
+  background-color: grey;
+}
+.About{
+  width: 30%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  border-radius: 25px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: larger;
 }
