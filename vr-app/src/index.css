@@ -39,3 +39,14 @@ code {
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-size: larger;
 }
+#homecar{
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 7%;
+  margin-bottom: 6.7%;
+}
+.card{
+
+width: 17%;
+justify-content: space-evenly;
+}
