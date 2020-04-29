@@ -11,7 +11,7 @@ const initialState = {
 };
 
 const initialErrorState = {
-  name: "",
+  username: "",
   password: "",
 };
 

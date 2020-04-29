@@ -6,7 +6,7 @@ import "../index.css";
 
 
 const initialErrorState = {
-  name: "",
+  username: "",
   password: "",
 };
 
@@ -25,7 +25,7 @@ const formSchema = yup.object().shape({
 
 const SignUp = props => {
   const [signUp, setSignUp] = useState({
-    name: "",
+    username: "",
     password: ""
   });
 
