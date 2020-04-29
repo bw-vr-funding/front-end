@@ -12,6 +12,7 @@ const UpdateForm = props => {
         funding: 0,
         creator_id: localStorage.getItem("User Id")
       });
+
     const match = useRouteMatch();
     const history = useHistory();
 
@@ -23,7 +24,6 @@ const UpdateForm = props => {
         });
     }
     const handleSubmit = e => {
-        e.preventDefault();
         const id = match.params.id
         axiosWithAuth()
         .put(`/projects/9`, newData)
@@ -32,7 +32,6 @@ const UpdateForm = props => {
     }
     return (
         <div>
-            {newData && (
                 <form onSubmit={handleSubmit}>
                 <label>Name:</label>
                 <input
@@ -78,7 +77,6 @@ const UpdateForm = props => {
                 />
                 <button type='submit'>Update Project</button>
             </form>
-            )}
         </div>
     )
 }
