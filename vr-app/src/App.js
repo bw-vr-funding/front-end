@@ -7,6 +7,8 @@ import Login from './components/Login';
 import SignUp from './components/SignUp';
 import Dashboard from "./components/Dashboard";
 import Home from "./components/Home";
+import UpdateForm from './components/UpdateForm'
+import Project from './components/Project'
 
 import PrivateRoute from "./components/PrivateRoute";
 
@@ -27,6 +29,8 @@ function App() {
       <Route path="/login" component={Login}/>
       <Route path="/home" component={Home}/>
       <PrivateRoute path="/dashboard" component={Dashboard} />
+      <PrivateRoute path="/update-project" component={UpdateForm} />
+      <PrivateRoute path='/project/:id}' component={Project} />
     </div>
   );
 }

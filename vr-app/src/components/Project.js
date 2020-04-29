@@ -1,8 +1,10 @@
-import React from 'react'
+import React from 'react';
+import { Card, CardHeader, CardText, CardBody, CardSubtitle, Badge, Col, CardImg } from 'reactstrap';
+import styled from "styled-components";
+
+
 
 const Project = (props) => {
-
-  
 
     return (
         <div>

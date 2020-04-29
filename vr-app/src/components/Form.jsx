@@ -1,5 +1,67 @@
 import React, { useState } from "react";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
+import styled from "styled-components";
+
+
+const FormBorder = styled.div`
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 5px 0;
+  font-size: 1.4rem;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  margin: 5px 0 0;
+  display: block;
+  width: 100%;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 1.4rem;
+  background-color: white;
+}
+
+input:focus {
+  outline: none;
+  border-color: black;
+}
+
+button {
+  width: 300px;
+  padding: 8px 11px;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  border: 0;
+  border-radius: 5px;
+  letter-spacing: 2px;
+  outline: none;
+  background-color: #4dd0e1;
+  color: aliceblue;
+  cursor: pointer;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
+}
+
+button:hover {
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.3);
+}
+
+`;
+
 
 const Form = () => {
   const [data, setData] = useState({
@@ -29,6 +91,8 @@ const Form = () => {
   };
 
   return (
+    <FormBorder>
+    <body classname="formsubmit">
     <form onSubmit={submitForm}>
       <label>Name:
       <input
@@ -78,8 +142,11 @@ const Form = () => {
         onChange={changeHandler}
       />
       </label>
-      <button type="submit">Add Project</button>
+      <br />
+      <button classname="" type="submit">Add Project</button>
     </form>
+    </body>
+    </FormBorder>
   );
 };
 
