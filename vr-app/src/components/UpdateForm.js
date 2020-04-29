@@ -18,15 +18,15 @@ const UpdateForm = props => {
     const match = useRouteMatch();
     const history = useHistory();
 
-    useEffect(() => {
-        const id = match.params.id
-        axiosWithAuth()
-        .get(`/projects/${id}`)
-        .then(res => {
-            console.log('!!!!!', res)
-        })
-        .catch(err => {console.log('!!!!!', err)})
-    }, [match.params.id]);
+    // useEffect(() => {
+    //     const id = match.params.id
+    //     axiosWithAuth()
+    //     .get(`/projects/${id}`)
+    //     .then(res => {
+    //         console.log('!!!!!', res)
+    //     })
+    //     .catch(err => {console.log('!!!!!', err)})
+    // }, [match.params.id]);
 
     const handleChanges = e => {
         setNewProject({
@@ -38,7 +38,7 @@ const UpdateForm = props => {
         e.preventDefault();
         const id = match.params.id
         axiosWithAuth()
-        .put('/projects/:id', newProject)
+        .put(`/projects/${newProject.id}`, newProject)
         .then(history.push(`/dashboard`))
         .catch(err => {console.log(err)})
     }
@@ -87,6 +87,7 @@ const UpdateForm = props => {
                  value={data.funding}
                  onChange={handleChanges} 
                 />
+                <button type='submit'>Update Project</button>
             </form>
             
         </div>

@@ -9,7 +9,7 @@ const Form = () => {
     category: "",
     funding_goal: 0,
     funding: 0,
-    creator_id: 1
+    creator_id: localStorage.getItem("User Id")
   });
 
   const changeHandler = e => {

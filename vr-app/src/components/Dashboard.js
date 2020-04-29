@@ -26,7 +26,6 @@ function Dashboard() {
         <h1>VR Entrepenuers Hub</h1>
         <Form />
         <Projects />
-        <UpdateForm />
       </ProjectContext.Provider>
     </div>
   );
