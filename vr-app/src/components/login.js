@@ -11,7 +11,7 @@ const initialState = {
 };
 
 const initialErrorState = {
-  name: "",
+  username: "",
   password: "",
 };
 
@@ -62,8 +62,9 @@ const Login = props => {
     axiosWithAuth()
       .post("/auth/login", login)
       .then(res => {
-        localStorage.setItem("token", res.data.message);
-        props.history.push("/");
+        localStorage.setItem("token", res.data.token);
+        localStorage.setItem("User Id", res.data.id);
+        props.history.push("/dashboard");
       })
       .catch(err => {
         console.log(err, "cannot login");
