@@ -5,8 +5,10 @@ import './App.css';
 //Special Imports
 import axios from 'axios'
 //Page Imports
-import Login from './components/Login'
-import SignUp from './components/SignUp'
+import Login from './components/Login';
+import SignUp from './components/SignUp';
+import Dashboard from "./components/Dashboard";
+import PrivateRoute from "./components/PrivateRoute";
 
 
 
@@ -20,6 +22,7 @@ function App() {
       
       <Route path="/signup" component={SignUp}/>
       <Route path="/login" component={Login}/>
+      <PrivateRoute path="/dashboard" component={Dashboard} />
 
     </div>
   );
