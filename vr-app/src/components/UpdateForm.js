@@ -26,7 +26,7 @@ const UpdateForm = props => {
         e.preventDefault();
         const id = match.params.id
         axiosWithAuth()
-        .put(`/projects/${id}`, newData)
+        .put(`/projects/9`, newData)
         .then(history.push(`/dashboard`))
         .catch(err => {console.log(err)})
     }
