@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
+import * as yup from "yup";
+import "../index.css";
 
 const initialState = {
   username: "",
@@ -8,11 +10,50 @@ const initialState = {
   isFetching: false
 };
 
+const initialErrorState = {
+  name: "",
+  password: "",
+};
+
+//schema
+const formSchema = yup.object().shape({
+  username: yup
+    .string()
+    .min(5, "Please Enter The Correct Username")
+    .required(),
+  password: yup
+    .string()
+    .min(5, "Please Enter The Correct Password")
+    .required("Password is required"),
+});
+
 const Login = props => {
   const [login, setLogin] = useState(initialState);
 
+  const [errors, setErrors] = useState(initialErrorState);
+
   const handleChange = e => {
     setLogin({ ...login, [e.target.name]: e.target.value });
+
+    const name = e.target.name;
+    const value = e.target.value;
+
+    //yup
+    yup
+      .reach(formSchema, name)
+      .validate(value)
+      .then((valid) => {
+        setErrors({
+          ...errors,
+          [name]: "",
+        });
+      })
+      .catch((err) => {
+        setErrors({
+          ...errors,
+          [name]: err.errors[0],
+        });
+      });
   };
 
   const handleSubmit = event => {
@@ -35,7 +76,8 @@ const Login = props => {
       <h2>Login</h2>
       <h4>Welcome back!</h4>
       <div>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} id="loginForm">
+        <p className="errors">{errors.username}</p>
           <input
             id="name"
             label="Username"
@@ -46,6 +88,7 @@ const Login = props => {
             value={login.username}
           />
           <br />
+          <p className="errors">{errors.password}</p>
           <input
             id="password"
             label="Password"
@@ -56,7 +99,9 @@ const Login = props => {
             value={login.password}
           />
           <br />
-          <button type="submit">Submit</button>
+          <button type="submit" className="submitBut">Submit</button>
+          <br />
+         <Link to="/home"><button className="homebut" >Take Me Home</button></Link>
         </form>
         Make an account? <Link to="/signup">Sign Up</Link>
       </div>

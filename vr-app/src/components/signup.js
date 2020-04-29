@@ -1,15 +1,60 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
+import * as yup from "yup";
+import "../index.css";
+
+
+const initialErrorState = {
+  name: "",
+  password: "",
+};
+
+//schema
+const formSchema = yup.object().shape({
+  username: yup
+    .string()
+    .min(5, "Username must have at least 5 characters!")
+    .required(),
+  password: yup
+    .string()
+    .min(5, "Password must include 5 characters and 10 symbols")
+    .required("Password is required"),
+});
+
 
 const SignUp = props => {
   const [signUp, setSignUp] = useState({
-    username: "",
+    name: "",
     password: ""
   });
 
+  const [errors, setErrors] = useState(initialErrorState);
+
   const handleChange = e => {
     setSignUp({ ...signUp, [e.target.name]: e.target.value });
+
+    const name = e.target.name;
+    const value = e.target.value;
+
+    //yup
+    yup
+      .reach(formSchema, name)
+      .validate(value)
+      .then((valid) => {
+        setErrors({
+          ...errors,
+          [name]: "",
+        });
+      })
+      .catch((err) => {
+        setErrors({
+          ...errors,
+          [name]: err.errors[0],
+        });
+      });
+
+
   };
 
   const handleSubmit = e => {
@@ -27,8 +72,9 @@ const SignUp = props => {
 
   return (
     <div>    
-      <h3>Sign Up</h3>
-      <form onSubmit={handleSubmit}>
+      <h2>Sign Up</h2>
+      <form onSubmit={handleSubmit} id="signUpForm">
+      <p className="errors">{errors.username}</p>
         <input
           label="Username"
           id="username"
@@ -37,6 +83,7 @@ const SignUp = props => {
           onChange={handleChange}
         />
         <br />
+        <p className="errors">{errors.password}</p>
         <input
           label="Password"
           type="password"
@@ -47,7 +94,9 @@ const SignUp = props => {
         />
         <br />
         <br />
-        <button>Sign Up</button>
+        <button className="submitBut">Sign Up</button>
+        <br />
+        <Link to="/home"><button className="homebut" >Take Me Home</button></Link>
       </form>
       <br />
       Have an account already? <Link to="/login">Log In</Link>
