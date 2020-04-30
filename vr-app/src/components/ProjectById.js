@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 //components
+import UpdateForm from "./UpdateForm";
+//styling
 import {
   Card,
   CardHeader,
@@ -13,7 +15,6 @@ import {
   Col,
   CardImg,
 } from "reactstrap";
-//styling
 import styled from "styled-components";
 
 const ProjectById = (props) => {
@@ -65,31 +66,7 @@ const ProjectById = (props) => {
     <div>
       {isEditOpen === true ? (
         <>
-          <form>
-            <label>
-              Name:
-              <input />
-            </label>
-            <label>
-              Description:
-              <input />
-            </label>
-            <label>
-              Img:
-              <input />
-            </label>
-            <label>
-              Category:
-              <input />
-            </label>
-            <label>
-              Funding Goal:
-              <input />
-            </label>
-            <button type="button" onClick={editProject}>
-              submit
-            </button>
-          </form>
+          <UpdateForm id={id}/>
         </>
       ) : (
         <>

@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import { useRouteMatch, useHistory } from 'react-router-dom'
 import {axiosWithAuth} from '../utils/axiosWithAuth'
-const UpdateForm = props => {
+const UpdateForm = ({id}) => {
     // const [ newData, setNewData] = useState()
     const [newData, setNewData] = useState({
         name: "",
@@ -26,7 +26,7 @@ const UpdateForm = props => {
     const handleSubmit = e => {
         const id = match.params.id
         axiosWithAuth()
-        .put(`/projects/11`, newData)
+        .put(`/projects/${id}`, newData)
         .then(history.push(`/dashboard`))
         .catch(err => {console.log(err)})
     }
