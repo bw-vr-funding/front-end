@@ -21,7 +21,7 @@ function App() {
         </Link>
         <div id="navButtons">
           <Link to="/signup">
-            <button className="topbut">Sign Up</button>
+            <button className="topbut" >Sign Up</button>
           </Link>
           <Link to="/login">
             <button className="topbut">Login</button>

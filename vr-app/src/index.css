@@ -5,6 +5,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+
+  background: linear-gradient(20deg, #9fb8ad 10%, #1fc8db 51%, #2cb5e8 60%);
 }
 
 code {
@@ -17,10 +20,14 @@ code {
 .submitBut {
   border-radius: 25px;
   background-color: white;
-  padding: 1%;
+  padding: 1.5%;
   border: 1px solid black;
   margin-top: 5%;
   box-shadow: 5px 5px 5px;
+}
+.submitBut:hover{
+  cursor: pointer;
+  background-color: lightcyan;
 }
 .homebut {
   border-radius: 25px;
@@ -29,6 +36,10 @@ code {
   margin-top: 5%;
   padding: 1.5%;
   box-shadow: 5px 5px 5px;
+}
+.homebut:hover{
+  cursor: pointer;
+  background-color: lightcyan;
 }
 
 #footer {
@@ -43,6 +54,16 @@ code {
   border-radius: 25px;
   font-family: Georgia, "Times New Roman", Times, serif;
   font-size: larger;
+}
+.About:hover{
+  background-color: lightcyan;
+  color: darkblue;
+  border: 1px solid black;
+  -webkit-transition: background-color 1000ms linear;
+  -moz-transition: background-color 1000ms linear;
+  -o-transition: background-color 1000ms linear;
+  -ms-transition: background-color 1000ms linear;
+  transition: background-color 1000ms linear;
 }
 #homecar {
   display: flex;
@@ -59,6 +80,15 @@ code {
   padding-left: 0.2%;
   padding-right: 0.2%;
 }
+.card:hover{
+  background-color: turquoise;
+  color: black;
+  -webkit-transition: background-color 1000ms linear;
+  -moz-transition: background-color 1000ms linear;
+  -o-transition: background-color 1000ms linear;
+  -ms-transition: background-color 1000ms linear;
+  transition: background-color 1000ms linear;
+}
 .topbut {
   background-color: azure;
   border-radius: 25px;
@@ -67,7 +97,12 @@ code {
   top: 20%;
   width: 200%;
   box-shadow: 7px 7px 5px;
+
+}.topbut:hover{
+  cursor: pointer;
+  background-color: lightcyan;
 }
+
 #logo {
   margin-left: 5%;
   text-decoration: underline;
@@ -79,6 +114,7 @@ nav {
   padding: 0.4%;
   display: flex;
   border-bottom: 1px solid #a9ecff;
+  /* background: linear-gradient(190deg, #9fb8ad 3%, #1fc8db 51%, #bdeafa  60%) */
 }
 #navButtons {
   width: 30%;
@@ -102,6 +138,15 @@ nav {
   box-shadow: 10px 10px 10px;
   margin-bottom: 2%;
   background-color: aliceblue;
+}
+.signUpDiv{
+  height: 100vh;
+}
+.loginDiv{
+  height: 100vh;
+}
+.txt{
+  color: black;
 }
 
 /* FORMS */
