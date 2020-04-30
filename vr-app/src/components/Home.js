@@ -6,19 +6,19 @@ function Home() {
   return (
     <div>
       <div id="welcomeDiv">
-        
         <h1>Welcome to VR-Funding</h1>
-        <h2>Will you help <span id="change">change the world?</span></h2>
+        <h2>
+          Will you help <span id="change">change the world?</span>
+        </h2>
         <p>Create your own unique ideas, or fund fellow entrepeneurs!</p>
-        <Link>
-          <button className="About">About Us</button>
-        </Link>
+        
+          <button className="About">
+            <a href="https://bw-vr-funding.github.io/UI/">About Us</a>
+          </button>
+        
         <br />
         <br />
         Have an account already? <Link to="/login">Log In</Link>
-        <button className="About">
-            <a href="https://bw-vr-funding.github.io/UI/">About Us</a>
-          </button>
       </div>
       <div id="homecar">
         <div className="card">
