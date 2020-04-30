@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import { ProjectContext } from "../contexts/ProjectContext";
 import Form from "./Form";
-import Projects from "./ProjectList";
+import ProjectList from "./ProjectList";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 
@@ -23,7 +23,7 @@ function Dashboard() {
       <ProjectContext.Provider value={{ projects }}>
         <h1>VR Entrepeneur Hub</h1>
         <Form />
-        <Projects />
+        <ProjectList />
       </ProjectContext.Provider>
     </div>
   );

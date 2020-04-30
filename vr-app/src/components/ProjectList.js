@@ -1,37 +1,39 @@
+//dependencies
 import React, { useContext } from "react";
 import { ProjectContext } from "../contexts/ProjectContext";
-import Project from "./Project";
-import UpdateForm from './UpdateForm'
+import { useRouteMatch, useHistory } from "react-router-dom";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { Route, Link } from "react-router-dom";
-import PrivateRoute from './PrivateRoute';
-import { useRouteMatch, useHistory } from 'react-router-dom'
-const Projects = () => {
+//components
+import Project from "./Project";
+import UpdateForm from "./UpdateForm";
+import PrivateRoute from "./PrivateRoute";
+
+const ProjectList = () => {
   const { projects } = useContext(ProjectContext);
   const match = useRouteMatch();
   const history = useHistory();
   const editProject = () => {
-    history.push(`/update-project/9`)
-}
+    history.push(`/update-project/9`);
+  };
   return (
     <div className="projects-container">
-        {projects.map(project => (
-            <>
-            <Link key={project.id} to={`/project/${project.id}`}>
+      {projects.map((project) => (
+        <div key={project.id}>
+          <Link  to={`/project/${project.id}`}>
             <Project projects={project} />
-            </Link>
-          <button onClick={e => {deleteProject(project)}}>Delete</button>
-          <button onClick={editProject}>Edit Form</button>
-          {/* <Route path="/update-form" component={UpdateForm}/>  */}
-        </>
-        ))}
+          </Link>
+        </div>
+      ))}
     </div>
   );
-}
-const deleteProject = project => {
-    axiosWithAuth()
-    .delete(`/projects/${project.id}`)
-    .then(res => {window.location.reload();})
-    .catch(err => console.log(err, "Could not delete Project"))
 };
-export default Projects;
+const deleteProject = (project) => {
+  axiosWithAuth()
+    .delete(`/projects/${project.id}`)
+    .then((res) => {
+      window.location.reload();
+    })
+    .catch((err) => console.log(err, "Could not delete Project"));
+};
+export default ProjectList;

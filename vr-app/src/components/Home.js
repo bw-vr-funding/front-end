@@ -16,7 +16,9 @@ function Home() {
         <br />
         <br />
         Have an account already? <Link to="/login">Log In</Link>
-        {/* <Route path="/about" component={About} /> */}
+        <button className="About">
+            <a href="https://bw-vr-funding.github.io/UI/">About Us</a>
+          </button>
       </div>
       <div id="homecar">
         <div className="card">
