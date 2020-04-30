@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Route, Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Route, Link, useHistory } from "react-router-dom";
 //Style Imports
 import "./App.css";
 //Page Imports
@@ -14,21 +14,36 @@ import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
   const isLogged = !!localStorage.getItem("token");
+  const history = useHistory();
+  const logout = () => {
+    localStorage.removeItem("token");
+    history.push("/");
+  };
+  console.log(isLogged);
   return (
     <div className="App">
       <nav>
         <Link to="/home">
           <h1 id="logo">VR-Funding</h1>
         </Link>
-        {isLogged ? <></> : <div id="navButtons">
-          <Link to="/signup">
-            <button className="topbut">Sign Up</button>
-          </Link>
-          <Link to="/login">
-            <button className="topbut">Login</button>
-          </Link>
-        </div>}
-        
+        {isLogged ? (
+          <div id="navButtons">
+            <Link>
+              <button className="topbut" onClick={logout}>
+                Logout
+              </button>
+            </Link>
+          </div>
+        ) : (
+          <div id="navButtons">
+            <Link to="/signup">
+              <button className="topbut">Sign Up</button>
+            </Link>
+            <Link to="/login">
+              <button className="topbut">Login</button>
+            </Link>
+          </div>
+        )}
       </nav>
       <Route path="/signup" component={SignUp} />
       <Route path="/login" component={Login} />
