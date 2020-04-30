@@ -26,7 +26,7 @@ const UpdateForm = props => {
     const handleSubmit = e => {
         const id = match.params.id
         axiosWithAuth()
-        .put(`/projects/11`, newData)
+        .put(`/projects/27`, newData)
         .then(history.push(`/dashboard`))
         .catch(err => {console.log(err)})
     }
