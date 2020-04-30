@@ -90,7 +90,7 @@ const Form = () => {
 
   return (
     <FormBorder>
-      <body className="formsubmit">
+      <div className="formsubmit">
         <form onSubmit={submitForm}>
           <label>
             Name:
@@ -151,7 +151,7 @@ const Form = () => {
             Add Project
           </button>
         </form>
-      </body>
+      </div>
     </FormBorder>
   );
 };
