@@ -4,7 +4,7 @@ import { axiosWithAuth } from "../utils/axiosWithAuth";
 import * as yup from "yup";
 import "../index.css";
 
-
+//variable states
 const initialErrorState = {
   username: "",
   password: "",
@@ -18,22 +18,25 @@ const formSchema = yup.object().shape({
     .required(),
   password: yup
     .string()
-    .min(5, "Password must include 5 characters and 10 symbols")
+    .min(5, "Password must include 5 characters")
     .required("Password is required"),
 });
 
-
-const SignUp = props => {
+//function
+const SignUp = (props) => {
   const [signUp, setSignUp] = useState({
     username: "",
-    password: ""
+    password: "",
   });
 
+  //usestates
   const [errors, setErrors] = useState(initialErrorState);
 
-  const handleChange = e => {
+  //handleChange
+  const handleChange = (e) => {
     setSignUp({ ...signUp, [e.target.name]: e.target.value });
 
+    //variables for the rules
     const name = e.target.name;
     const value = e.target.value;
 
@@ -53,28 +56,29 @@ const SignUp = props => {
           [name]: err.errors[0],
         });
       });
-
-
   };
 
-  const handleSubmit = e => {
+  //handleSubmit
+  const handleSubmit = (e) => {
     e.preventDefault();
     setSignUp({ ...signUp });
     axiosWithAuth()
       .post("/auth/register", signUp)
-      .then(res => {
+      .then((res) => {
         props.history.push("/");
       })
-      .catch(err =>
+      .catch((err) =>
         console.log(err, "sorry, an error has occured while signing you up")
       );
   };
 
+  //return
   return (
-    <div>    
-      <h2>Sign Up</h2>
+    <div className="signUpDiv">
+      <h2 className="txt">Sign Up</h2>
+      <h3 className="txt" >Join the Team!</h3>
       <form onSubmit={handleSubmit} id="signUpForm">
-      <p className="errors">{errors.username}</p>
+        <p className="errors">{errors.username}</p>
         <input
           label="Username"
           id="username"
@@ -96,7 +100,9 @@ const SignUp = props => {
         <br />
         <button className="submitBut">Sign Up</button>
         <br />
-        <Link to="/home"><button className="homebut" >Take Me Home</button></Link>
+        <Link to="/home">
+          <button className="homebut">Take Me Home</button>
+        </Link>
       </form>
       <br />
       Have an account already? <Link to="/login">Log In</Link>

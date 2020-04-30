@@ -4,6 +4,7 @@ import { axiosWithAuth } from "../utils/axiosWithAuth";
 import * as yup from "yup";
 import "../index.css";
 
+//variable states
 const initialState = {
   username: "",
   password: "",
@@ -27,14 +28,16 @@ const formSchema = yup.object().shape({
     .required("Password is required"),
 });
 
+//function
 const Login = props => {
+  //usestates
   const [login, setLogin] = useState(initialState);
-
   const [errors, setErrors] = useState(initialErrorState);
 
   const handleChange = e => {
     setLogin({ ...login, [e.target.name]: e.target.value });
 
+    //variables for the rules
     const name = e.target.name;
     const value = e.target.value;
 
@@ -56,6 +59,7 @@ const Login = props => {
       });
   };
 
+  //handleSubmit
   const handleSubmit = event => {
     event.preventDefault();
     setLogin({ ...login, isFetching: true });
@@ -71,10 +75,11 @@ const Login = props => {
       });
   };
 
+  //return
   return (
-    <div>
-      <h2>Login</h2>
-      <h4>Welcome back!</h4>
+    <div className="loginDiv">
+      <h2 className="txt" >Login</h2>
+      <h4 className="txt" >Welcome back!</h4>
       <div>
         <form onSubmit={handleSubmit} id="loginForm">
         <p className="errors">{errors.username}</p>

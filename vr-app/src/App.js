@@ -13,6 +13,7 @@ import ProjectById from "./components/ProjectById";
 import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
+
   const isLogged = !!localStorage.getItem("token");
   const history = useHistory();
   const logout = () => {
@@ -20,12 +21,14 @@ function App() {
     localStorage.removeItem("User Id");
     history.push("/");
   };
+
   return (
     <div className="App">
       <nav>
         <Link to="/home">
           <h1 id="logo">VR-Funding</h1>
         </Link>
+
         {isLogged ? (
           <div id="navButtons">
             <Link>
@@ -44,6 +47,7 @@ function App() {
             </Link>
           </div>
         )}
+
       </nav>
       <Route path="/signup" component={SignUp} />
       <Route path="/login" component={Login} />
