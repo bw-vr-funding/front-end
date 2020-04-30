@@ -9,20 +9,18 @@ import Project from "./Project";
 import UpdateForm from "./UpdateForm";
 import PrivateRoute from "./PrivateRoute";
 
-const Projects = () => {
+const ProjectList = () => {
   const { projects } = useContext(ProjectContext);
   const match = useRouteMatch();
-  console.log(match);
   const history = useHistory();
   const editProject = () => {
     history.push(`/update-project/9`);
   };
-  console.log("here")
   return (
     <div className="projects-container">
       {projects.map((project) => (
-        <>
-          <Link key={project.id} to={`/project/${project.id}`}>
+        <div key={project.id}>
+          <Link  to={`/project/${project.id}`}>
             <Project projects={project} />
           </Link>
           <button
@@ -34,7 +32,7 @@ const Projects = () => {
           </button>
           <button onClick={editProject}>Edit Form</button>
           {/* <Route path="/update-form" component={UpdateForm}/>  */}
-        </>
+        </div>
       ))}
     </div>
   );
@@ -47,4 +45,4 @@ const deleteProject = (project) => {
     })
     .catch((err) => console.log(err, "Could not delete Project"));
 };
-export default Projects;
+export default ProjectList;
