@@ -78,6 +78,7 @@ const Form = () => {
   };
 
   const submitForm = (e) => {
+    e.preventDefault()
     axiosWithAuth()
       .post("/projects", data)
       .then((res) => {

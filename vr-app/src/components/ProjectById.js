@@ -31,6 +31,17 @@ const ProjectById = (props) => {
       });
   }, []);
 
+  const deleteProject = () => {
+    axiosWithAuth()
+      .delete(`/projects/${id}`)
+      .then((res) => {
+          console.log(res)
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <div>
       <p>Name: {project.name}</p>
@@ -39,6 +50,8 @@ const ProjectById = (props) => {
       <p>Category: {project.category}</p>
       <p>Funding Goal: {project.funding_goal}</p>
       <p>Funding: {project.funding}</p>
+      <button onClick={deleteProject}>delete</button>
+      <button onClick={() => {}}>edit</button>
     </div>
   );
 };
