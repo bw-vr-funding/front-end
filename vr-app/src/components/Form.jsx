@@ -83,6 +83,7 @@ const Form = () => {
       .post("/projects", data)
       .then((res) => {
         console.log("///", res);
+        //reload
       })
       .catch((error) => {
         console.log(error);

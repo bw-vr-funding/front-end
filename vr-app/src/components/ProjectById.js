@@ -1,6 +1,6 @@
 //dependencies
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 //components
 import {
@@ -18,6 +18,7 @@ import styled from "styled-components";
 
 const ProjectById = (props) => {
   const { id } = useParams();
+  const history = useHistory();
   const [project, setProject] = useState({});
 
   useEffect(() => {
@@ -35,7 +36,7 @@ const ProjectById = (props) => {
     axiosWithAuth()
       .delete(`/projects/${id}`)
       .then((res) => {
-          console.log(res)
+        history.push("/dashboard");
       })
       .catch((err) => {
         console.log(err);
