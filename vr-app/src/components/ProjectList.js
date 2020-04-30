@@ -11,7 +11,7 @@ const Projects = () => {
   const match = useRouteMatch();
   const history = useHistory();
   const editProject = () => {
-    history.push(`/update-project/9`)
+    history.push(`/update-project/11`)
 }
   return (
     <div className="projects-container">
