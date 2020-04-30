@@ -17,9 +17,9 @@ function App() {
   const history = useHistory();
   const logout = () => {
     localStorage.removeItem("token");
+    localStorage.removeItem("User Id");
     history.push("/");
   };
-  console.log(isLogged);
   return (
     <div className="App">
       <nav>
