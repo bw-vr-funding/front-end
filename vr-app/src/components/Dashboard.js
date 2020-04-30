@@ -21,7 +21,7 @@ function Dashboard() {
   return (
     <div className="Dashboard">
       <ProjectContext.Provider value={{ projects }}>
-        <h1>VR Entrepenuers Hub</h1>
+        <h1>VR Entrepeneur Hub</h1>
         <Form />
         <Projects />
       </ProjectContext.Provider>
