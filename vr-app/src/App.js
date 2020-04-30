@@ -33,7 +33,7 @@ function App() {
       <Route path="/home" component={Home} />
       <PrivateRoute path="/dashboard" component={Dashboard} />
       <PrivateRoute path="/update-project" component={UpdateForm} />
-      <PrivateRoute path="/project/:id}" component={Project} />
+      <PrivateRoute path="/project/:id" component={Project} />
     </div>
   );
 }
