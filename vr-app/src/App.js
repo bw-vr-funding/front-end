@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Route, Link, useHistory } from "react-router-dom";
+import { Route, Link, useHistory, Redirect } from "react-router-dom";
 //Style Imports
 import "./App.css";
 //Page Imports
@@ -47,8 +47,8 @@ function App() {
             </Link>
           </div>
         )}
-
       </nav>
+      <Redirect exact path="/" to="/home" />
       <Route path="/signup" component={SignUp} />
       <Route path="/login" component={Login} />
       <Route path="/home" component={Home} />
