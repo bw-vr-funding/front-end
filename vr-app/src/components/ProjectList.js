@@ -1,14 +1,19 @@
+//dependencies
 import React, { useContext } from "react";
 import { ProjectContext } from "../contexts/ProjectContext";
-import Project from "./Project";
-import UpdateForm from './UpdateForm'
+import { useRouteMatch, useHistory } from 'react-router-dom'
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { Route, Link } from "react-router-dom";
+//components
+import Project from "./Project";
+import UpdateForm from './UpdateForm'
 import PrivateRoute from './PrivateRoute';
-import { useRouteMatch, useHistory } from 'react-router-dom'
+
+
 const Projects = () => {
   const { projects } = useContext(ProjectContext);
   const match = useRouteMatch();
+  console.log(match)
   const history = useHistory();
   const editProject = () => {
     history.push(`/update-project/9`)
