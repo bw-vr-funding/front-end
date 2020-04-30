@@ -3,8 +3,8 @@ import { Route, Link } from "react-router-dom";
 //Style Imports
 import "./App.css";
 //Page Imports
-import Login from "./components/Login.js";
-import SignUp from "./components/SignUp";
+import Login from "./components/login.js";
+import SignUp from "./components/signup";
 import Dashboard from "./components/Dashboard";
 import Home from "./components/Home";
 import UpdateForm from "./components/UpdateForm";
