@@ -31,6 +31,9 @@ function App() {
 
         {isLogged ? (
           <div id="navButtons">
+            <Link to="/dashboard">
+            <button className="topbut">Dashboard</button>
+            </Link>
             <Link>
               <button className="topbut" onClick={logout}>
                 Logout
