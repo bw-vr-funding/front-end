@@ -8,7 +8,7 @@ import SignUp from "./components/signup";
 import Dashboard from "./components/Dashboard";
 import Home from "./components/Home";
 import UpdateForm from "./components/UpdateForm";
-import Project from "./components/Project";
+import ProjectById from "./components/ProjectById";
 
 import PrivateRoute from "./components/PrivateRoute";
 
@@ -33,7 +33,7 @@ function App() {
       <Route path="/home" component={Home} />
       <PrivateRoute path="/dashboard" component={Dashboard} />
       <PrivateRoute path="/update-project" component={UpdateForm} />
-      <PrivateRoute path="/project/:id" component={Project} />
+      <PrivateRoute path="/project/:id" component={ProjectById} />
     </div>
   );
 }
