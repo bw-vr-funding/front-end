@@ -20,6 +20,8 @@ const ProjectById = (props) => {
   const { id } = useParams();
   const history = useHistory();
   const [project, setProject] = useState({});
+  const [isEditOpen, setIsEditOpen] = useState(false);
+  const [changes, setChanges] = useState({});
 
   useEffect(() => {
     axiosWithAuth()
@@ -43,16 +45,64 @@ const ProjectById = (props) => {
       });
   };
 
+  const edit = () => {
+    setIsEditOpen(!isEditOpen);
+    console.log(isEditOpen);
+  };
+
+  const editProject = () => {
+    axiosWithAuth()
+      .put(`/projects/${id}`, changes)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <div>
-      <p>Name: {project.name}</p>
-      <p>Description: {project.description}</p>
-      <img src={project.img_url} />
-      <p>Category: {project.category}</p>
-      <p>Funding Goal: {project.funding_goal}</p>
-      <p>Funding: {project.funding}</p>
-      <button onClick={deleteProject}>delete</button>
-      <button onClick={() => {}}>edit</button>
+      {isEditOpen === true ? (
+        <>
+          <form>
+            <label>
+              Name:
+              <input />
+            </label>
+            <label>
+              Description:
+              <input />
+            </label>
+            <label>
+              Img:
+              <input />
+            </label>
+            <label>
+              Category:
+              <input />
+            </label>
+            <label>
+              Funding Goal:
+              <input />
+            </label>
+            <button type="button" onClick={editProject}>
+              submit
+            </button>
+          </form>
+        </>
+      ) : (
+        <>
+          <p>Name: {project.name}</p>
+          <p>Description: {project.description}</p>
+          <img src={project.img_url} />
+          <p>Category: {project.category}</p>
+          <p>Funding Goal: {project.funding_goal}</p>
+          <p>Funding: {project.funding}</p>
+          <button onClick={deleteProject}>delete</button>
+        </>
+      )}
+      <button onClick={edit}>{isEditOpen ? "go back" : "edit"}</button>
     </div>
   );
 };
