@@ -51,22 +51,11 @@ const ProjectById = (props) => {
     console.log(isEditOpen);
   };
 
-  const editProject = () => {
-    axiosWithAuth()
-      .put(`/projects/${id}`, changes)
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
   return (
     <div>
       {isEditOpen === true ? (
         <>
-          <UpdateForm id={id}/>
+          <UpdateForm id={id} initialData={project} />
         </>
       ) : (
         <>

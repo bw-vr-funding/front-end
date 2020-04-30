@@ -13,20 +13,22 @@ import ProjectById from "./components/ProjectById";
 import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
+  const isLogged = !!localStorage.getItem("token");
   return (
     <div className="App">
       <nav>
         <Link to="/home">
           <h1 id="logo">VR-Funding</h1>
         </Link>
-        <div id="navButtons">
+        {isLogged ? <></> : <div id="navButtons">
           <Link to="/signup">
             <button className="topbut">Sign Up</button>
           </Link>
           <Link to="/login">
             <button className="topbut">Login</button>
           </Link>
-        </div>
+        </div>}
+        
       </nav>
       <Route path="/signup" component={SignUp} />
       <Route path="/login" component={Login} />

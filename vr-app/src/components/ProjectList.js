@@ -23,15 +23,6 @@ const ProjectList = () => {
           <Link  to={`/project/${project.id}`}>
             <Project projects={project} />
           </Link>
-          <button
-            onClick={(e) => {
-              deleteProject(project);
-            }}
-          >
-            Delete
-          </button>
-          <button onClick={editProject}>Edit Form</button>
-          {/* <Route path="/update-form" component={UpdateForm}/>  */}
         </div>
       ))}
     </div>
