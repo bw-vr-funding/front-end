@@ -19,10 +19,12 @@ import styled from "styled-components";
 
 const ProjectById = (props) => {
   const { id } = useParams();
+  const userId = localStorage.getItem("User Id");
   const history = useHistory();
   const [project, setProject] = useState({});
   const [isEditOpen, setIsEditOpen] = useState(false);
-  const [changes, setChanges] = useState({});
+  console.log(project.creator_id);
+  console.log(userId);
 
   useEffect(() => {
     axiosWithAuth()
@@ -65,10 +67,14 @@ const ProjectById = (props) => {
           <p>Category: {project.category}</p>
           <p>Funding Goal: {project.funding_goal}</p>
           <p>Funding: {project.funding}</p>
-          <button onClick={deleteProject}>delete</button>
+          {project.creator_id == userId ? (
+            <button onClick={deleteProject}>delete</button>
+          ) : null}
         </>
       )}
-      <button onClick={edit}>{isEditOpen ? "go back" : "edit"}</button>
+      {project.creator_id == userId ? (
+        <button onClick={edit}>{isEditOpen ? "go back" : "edit"}</button>
+      ) : null}
     </div>
   );
 };
