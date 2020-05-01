@@ -17,6 +17,7 @@ import {
 import styled from "styled-components";
 
 const Project = ({projects}) => {
+  
 
   return (
     <div>
@@ -26,6 +27,8 @@ const Project = ({projects}) => {
       <p>Category: {projects.category}</p>
       <p>Funding Goal: {projects.funding_goal}</p>
       <p>Funding: {projects.funding}</p>
+      
+      
     </div>
   );
 };
