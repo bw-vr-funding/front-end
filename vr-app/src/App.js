@@ -19,7 +19,8 @@ function App() {
   const logout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("User Id");
-    history.push("/");
+    history.push("/home");
+
   };
 
   return (
@@ -31,6 +32,9 @@ function App() {
 
         {isLogged ? (
           <div id="navButtons">
+            <Link to="/dashboard">
+            <button className="topbut">Dashboard</button>
+            </Link>
             <Link>
               <button className="topbut" onClick={logout}>
                 Logout
